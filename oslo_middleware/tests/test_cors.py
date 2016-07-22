@@ -79,7 +79,7 @@ class CORSTestBase(test_base.BaseTestCase):
         """
 
         # Assert response status.
-        self.assertEqual(response.status, status)
+        self.assertEqual(status, response.status)
 
         # Assert the Access-Control-Allow-Origin header.
         self.assertHeader(response,
@@ -183,7 +183,7 @@ class CORSTestDefaultOverrides(CORSTestBase):
 
         # Check the global configuration for expected values:
         gc = self.config.cors
-        self.assertEqual(gc.allowed_origin, ['http://valid.example.com'])
+        self.assertEqual(['http://valid.example.com'], gc.allowed_origin)
         self.assertEqual(gc.allow_credentials,
                          self.override_opts['allow_credentials'])
         self.assertEqual(gc.expose_headers,
